@@ -1,0 +1,145 @@
+#pragma once
+#include "synth_types.h"
+
+// -----------------------------------------------------------------------------
+// Shared ADSR envelope reused by every waveform-comparison entry, so what you
+// hear changing between steps is ONLY the waveform, nothing else.
+// -----------------------------------------------------------------------------
+#define DEMO_WAVE_ADSR { 30, 200, 0.75f, 400 }
+
+// =============================================================================
+// INSTRUMENT DEFINITIONS
+// =============================================================================
+
+const Instrument INST_ACCORDION_BASS = { SAW_TABLE, { 20, 100, 0.80f, 70 }, { false, 0, 0 }, 0.75f, 0.0f, 0.0f };
+const Instrument INST_ACCORDION_LEAD = { SAW_TABLE, { 25, 120, 0.88f, 80 }, { false, 0, 0 }, 0.80f, 0.005f, 6.2f };
+const Instrument INST_ACCORDION_REED2 = { SQUARE_TABLE, { 25, 120, 0.85f, 80 }, { false, 0, 0 }, 0.65f, 0.003f, 5.8f };
+const Instrument INST_AFFECTION_BASS = { SINE_TABLE, { 100, 200, 0.85f, 400 }, { false, 0, 0 }, 0.80f, 0.0f, 0.0f };
+const Instrument INST_AFFECTION_HARMONY = { WARM_TRIANGLE_TABLE, { 250, 350, 0.75f, 500 }, { false, 0, 0 }, 0.70f, 0.003f, 3.0f };
+const Instrument INST_AGGRESSIVE_SAW = { SAW_TABLE, { 10, 100, 0.80f, 100 }, { true, 12, 6 }, 0.90f, 0.001f, 6.0f };
+const Instrument INST_ANGER_BASS = { SQUARE_TABLE, { 10, 80, 0.90f, 100 }, { false, 0, 0 }, 0.95f, 0.0f, 0.0f };
+const Instrument INST_ANGER_HARMONY = { SAW_TABLE, { 15, 120, 0.75f, 120 }, { true, 7, 4 }, 0.85f, 0.002f, 5.0f };
+const Instrument INST_BASS_ATTACK = { BRIGHT_TRIANGLE_TABLE, { 3, 80, 0.02f, 60 }, { false, 0, 0 }, 0.55f, 0.0f, 0.0f };
+const Instrument INST_BASS_PIZZ_WOOD = { WARM_TRIANGLE_TABLE, { 8, 320, 0.22f, 200 }, { false, 0, 0 }, 0.95f, 0.0f, 0.0f };
+const Instrument INST_BASS_SUB = { SINE_TABLE, { 20, 100, 0.90f, 200 }, { false, 0, 0 }, 0.95f, 0.000f, 0.0f };
+const Instrument INST_BASS_SUB_BODY = { SINE_TABLE, { 12, 380, 0.25f, 240 }, { false, 0, 0 }, 0.88f, 0.0f, 0.0f };
+const Instrument INST_BASSOON_OR_LOW_REED = { WARM_TRIANGLE_TABLE, { 15, 120, 0.75f, 140 }, { false, 0, 0 }, 0.78f, 0.002f, 4.0f };
+const Instrument INST_BELL = { SINE_TABLE, { 2, 500, 0.10f, 600 }, { true, 7, 2 }, 0.80f, 0.002f, 5.0f };
+const Instrument INST_BELL_FUNDAMENTAL = { SINE_TABLE, { 2, 700, 0.15f, 750 }, { false, 0, 0 }, 0.85f, 0.0f, 0.0f };
+const Instrument INST_BELL_HIGH_OCT = { SINE_TABLE, { 1, 400, 0.02f, 450 }, { false, 0, 0 }, 0.65f, 0.0f, 0.0f };
+const Instrument INST_BELL_STRIKE_M5 = { BRIGHT_TRIANGLE_TABLE, { 1, 500, 0.05f, 600 }, { true, 7, 2 }, 0.75f, 0.001f, 3.0f };
+const Instrument INST_BELL_SUB = { WARM_TRIANGLE_TABLE, { 3, 750, 0.10f, 750 }, { false, 0, 0 }, 0.70f, 0.0f, 0.0f };
+const Instrument INST_BRASS = { SAW_TABLE, { 40, 150, 0.82f, 180 }, { false, 0, 0 }, 0.78f, 0.003f, 4.0f };
+const Instrument INST_CELLO_BODY = { WARM_TRIANGLE_TABLE, { 160, 220, 0.85f, 260 }, { false, 0, 0 }, 0.70f, 0.002f, 4.5f };
+const Instrument INST_CELEBRATION_BASS = { SQUARE_TABLE, { 20, 100, 0.85f, 200 }, { false, 0, 0 }, 0.90f, 0.0f, 0.0f };
+const Instrument INST_CELEBRATION_HARMONY = { SAW_TABLE, { 80, 250, 0.65f, 300 }, { true, 7, 3 }, 0.80f, 0.003f, 4.0f };
+const Instrument INST_CHIPTUNE = { SQUARE_TABLE, { 10, 200, 0.50f, 150 }, { true, 12, 4 }, 0.80f, 0.000f, 0.0f };
+const Instrument INST_COLDNESS_BASS = { SINE_TABLE, { 10, 80, 0.70f, 120 }, { false, 0, 0 }, 0.85f, 0.0f, 0.0f };
+const Instrument INST_COLDNESS_HARMONY = { SQUARE_TABLE, { 8, 60, 0.35f, 100 }, { true, 4, 1 }, 0.75f, 0.000f, 0.0f };
+const Instrument INST_CONFIDENCE_BASS = { SINE_TABLE, { 10, 100, 0.90f, 150 }, { false, 0, 0 }, 0.90f, 0.0f, 0.0f };
+const Instrument INST_CONFIDENCE_HARMONY = { BRIGHT_TRIANGLE_TABLE, { 20, 160, 0.65f, 200 }, { false, 0, 0 }, 0.75f, 0.004f, 4.0f };
+const Instrument INST_DEMO_ADSR_LONGTAIL = { TRIANGLE_TABLE, { 5, 60, 0.60f, 600 }, { false, 0, 0 }, 0.80f, 0.0f, 0.0f };
+const Instrument INST_DEMO_ADSR_STACCATO = { SQUARE_TABLE, { 5, 80, 0.50f, 300 }, { false, 0, 0 }, 0.85f, 0.0f, 0.0f };
+const Instrument INST_DEMO_ARPEG_M3 = { SQUARE_TABLE, { 10, 150, 0.70f, 150 }, { true, 4, 6 }, 0.75f, 0.0f, 0.0f };
+const Instrument INST_DEMO_ARPEG_OCT = { SQUARE_TABLE, { 10, 150, 0.70f, 150 }, { true, 12, 10 }, 0.75f, 0.0f, 0.0f };
+const Instrument INST_DEMO_ARPEG_P5 = { SQUARE_TABLE, { 10, 150, 0.70f, 150 }, { true, 7, 8 }, 0.75f, 0.0f, 0.0f };
+const Instrument INST_DEMO_DELAY_PLUCK = { BRIGHT_TRIANGLE_TABLE, { 4, 140, 0.15f, 100 }, { false, 0, 0 }, 0.85f, 0.0f, 0.0f };
+const Instrument INST_DEMO_FULL_BASS = { SINE_TABLE, { 20, 120, 0.85f, 200 }, { false, 0, 0 }, 0.90f, 0.0f, 0.0f };
+const Instrument INST_DEMO_FULL_HARMONY = { TRIANGLE_TABLE, { 40, 200, 0.60f, 300 }, { false, 0, 0 }, 0.50f, 0.003f, 3.0f };
+const Instrument INST_DEMO_FULL_LEAD = { SAW_TABLE, { 15, 150, 0.70f, 250 }, { true, 7, 5 }, 0.85f, 0.006f, 5.0f };
+const Instrument INST_DEMO_LIMITER_FIFTH = { SQUARE_TABLE, { 5, 50, 0.95f, 150 }, { false, 0, 0 }, 1.0f, 0.0f, 0.0f };
+const Instrument INST_DEMO_LIMITER_ROOT = { SQUARE_TABLE, { 5, 50, 0.95f, 150 }, { false, 0, 0 }, 1.0f, 0.0f, 0.0f };
+const Instrument INST_DEMO_LIMITER_THIRD = { SAW_TABLE, { 5, 50, 0.95f, 150 }, { false, 0, 0 }, 1.0f, 0.0f, 0.0f };
+const Instrument INST_DEMO_VIBRATO_DEEP = { SINE_TABLE, { 200, 300, 0.85f, 400 }, { false, 0, 0 }, 0.75f, 0.014f, 7.0f };
+const Instrument INST_DEMO_VIBRATO_LIGHT = { SINE_TABLE, { 200, 300, 0.85f, 400 }, { false, 0, 0 }, 0.75f, 0.002f, 3.0f };
+const Instrument INST_DEMO_VIBRATO_MEDIUM = { SINE_TABLE, { 200, 300, 0.85f, 400 }, { false, 0, 0 }, 0.75f, 0.006f, 5.0f };
+const Instrument INST_DEMO_WAVE_BRIGHTTRI = { BRIGHT_TRIANGLE_TABLE, DEMO_WAVE_ADSR, { false, 0, 0 }, 0.78f, 0.0f, 0.0f };
+const Instrument INST_DEMO_WAVE_SAW = { SAW_TABLE, DEMO_WAVE_ADSR, { false, 0, 0 }, 0.65f, 0.0f, 0.0f };
+const Instrument INST_DEMO_WAVE_SINE = { SINE_TABLE, DEMO_WAVE_ADSR, { false, 0, 0 }, 0.92f, 0.0f, 0.0f };
+const Instrument INST_DEMO_WAVE_SQUARE = { SQUARE_TABLE, DEMO_WAVE_ADSR, { false, 0, 0 }, 0.60f, 0.0f, 0.0f };
+const Instrument INST_DEMO_WAVE_TRIANGLE = { TRIANGLE_TABLE, DEMO_WAVE_ADSR, { false, 0, 0 }, 0.80f, 0.0f, 0.0f };
+const Instrument INST_DEMO_WAVE_WARMTRI = { WARM_TRIANGLE_TABLE, DEMO_WAVE_ADSR, { false, 0, 0 }, 0.78f, 0.0f, 0.0f };
+const Instrument INST_DOUBT_BASS = { SINE_TABLE, { 30, 150, 0.80f, 250 }, { false, 0, 0 }, 0.85f, 0.0f, 0.0f };
+const Instrument INST_DOUBT_HARMONY = { TRIANGLE_TABLE, { 20, 250, 0.50f, 200 }, { false, 0, 0 }, 0.70f, 0.002f, 2.0f };
+const Instrument INST_DREAD_BASS = { SINE_TABLE, { 30, 150, 0.90f, 250 }, { false, 0, 0 }, 0.92f, 0.0f, 0.0f };
+const Instrument INST_DREAD_HARMONY = { SAW_TABLE, { 150, 300, 0.50f, 300 }, { false, 0, 0 }, 0.78f, 0.008f, 4.0f };
+const Instrument INST_FATIGUE_BASS = { WARM_TRIANGLE_TABLE, { 400, 400, 0.75f, 900 }, { false, 0, 0 }, 0.70f, 0.0f, 0.0f };
+const Instrument INST_FATIGUE_HARMONY = { SINE_TABLE, { 600, 500, 0.70f, 800 }, { false, 0, 0 }, 0.55f, 0.002f, 2.0f };
+const Instrument INST_FLUTE = { SINE_TABLE, { 400, 200, 0.85f, 500 }, { false, 0, 0 }, 0.70f, 0.005f, 4.0f };
+const Instrument INST_FLUTE_BASS = { WARM_TRIANGLE_TABLE, { 80, 200, 0.80f, 250 }, { false, 0, 0 }, 0.70f, 0.002f, 4.5f };
+const Instrument INST_FLUTE_SOLO = { SINE_TABLE, { 60, 160, 0.85f, 200 }, { false, 0, 0 }, 0.82f, 0.007f, 5.2f };
+const Instrument INST_FLUTE_TENOR = { SINE_TABLE, { 70, 180, 0.82f, 220 }, { false, 0, 0 }, 0.65f, 0.004f, 5.0f };
+const Instrument INST_FRENCH_HORN = { SAW_TABLE, { 60, 160, 0.82f, 150 }, { false, 0, 0 }, 0.70f, 0.002f, 4.8f };
+const Instrument INST_GUITAR_BASS = { WARM_TRIANGLE_TABLE, { 6, 500, 0.12f, 300 }, { false, 0, 0 }, 0.85f, 0.0f, 0.0f };
+const Instrument INST_GUITAR_HIGH = { BRIGHT_TRIANGLE_TABLE, { 3, 350, 0.08f, 200 }, { false, 0, 0 }, 0.75f, 0.0020f, 5.0f };
+const Instrument INST_GUITAR_MID = { BRIGHT_TRIANGLE_TABLE, { 4, 400, 0.10f, 250 }, { false, 0, 0 }, 0.80f, 0.0015f, 4.5f };
+const Instrument INST_HARPSICHORD_BASS = { SAW_TABLE, { 2, 300, 0.05f, 150 }, { false, 0, 0 }, 0.80f, 0.0f, 0.0f };
+const Instrument INST_HARPSICHORD_MID = { BRIGHT_TRIANGLE_TABLE, { 2, 240, 0.04f, 120 }, { false, 0, 0 }, 0.75f, 0.0f, 0.0f };
+const Instrument INST_HARPSICHORD_TREB = { SAW_TABLE, { 1, 200, 0.03f, 100 }, { false, 0, 0 }, 0.70f, 0.0f, 0.0f };
+const Instrument INST_IMPULSE_BASS = { SAW_TABLE, { 5, 60, 0.85f, 90 }, { false, 0, 0 }, 0.92f, 0.0f, 0.0f };
+const Instrument INST_IMPULSE_HARMONY = { SQUARE_TABLE, { 5, 50, 0.65f, 70 }, { true, 7, 2 }, 0.85f, 0.001f, 7.0f };
+const Instrument INST_JOY_BASS = { SINE_TABLE, { 15, 100, 0.85f, 150 }, { false, 0, 0 }, 0.88f, 0.0f, 0.0f };
+const Instrument INST_JOY_HARMONY = { BRIGHT_TRIANGLE_TABLE, { 30, 180, 0.65f, 120 }, { false, 0, 0 }, 0.75f, 0.003f, 5.0f };
+const Instrument INST_MARIMBA_HIGH = { BRIGHT_TRIANGLE_TABLE, { 1, 240, 0.0f, 100 }, { false, 0, 0 }, 0.75f, 0.0f, 0.0f };
+const Instrument INST_MARIMBA_LOW = { WARM_TRIANGLE_TABLE, { 2, 380, 0.0f, 150 }, { false, 0, 0 }, 0.90f, 0.0f, 0.0f };
+const Instrument INST_MARIMBA_MID = { BRIGHT_TRIANGLE_TABLE, { 2, 300, 0.0f, 120 }, { false, 0, 0 }, 0.80f, 0.0f, 0.0f };
+const Instrument INST_MELANCHOLY = {TRIANGLE_TABLE, { 300, 400, 0.70f, 600 }, { false, 0, 0 }, 0.75f, 0.006f, 3.5f };
+const Instrument INST_MELANCHOLY_BASS = { SINE_TABLE, { 50, 300, 0.80f, 400 }, { false, 0, 0 }, 0.80f, 0.0f, 0.0f };
+const Instrument INST_MELANCHOLY_HARMONY = { WARM_TRIANGLE_TABLE, { 350, 450, 0.60f, 700 }, { false, 0, 0 }, 0.65f, 0.004f, 3.0f };
+const Instrument INST_MISCHIEF_BASS = { SAW_TABLE, { 10, 90, 0.80f, 120 }, { false, 0, 0 }, 0.85f, 0.0f, 0.0f };
+const Instrument INST_MISCHIEF_HARMONY = { SQUARE_TABLE, { 20, 100, 0.50f, 100 }, { true, 7, 3 }, 0.75f, 0.003f, 6.0f };
+const Instrument INST_ODE_BRIGHTTRI = { BRIGHT_TRIANGLE_TABLE, { 15, 100, 0.80f, 120 }, { false, 0, 0 }, 0.80f, 0.003f, 5.0f };
+const Instrument INST_ODE_JOY = { SINE_TABLE, { 20, 150, 0.60f, 100 }, { true, 4, 2 }, 0.85f, 0.004f, 6.0f };
+const Instrument INST_ODE_ORGAN4FT = { SINE_TABLE, { 30, 200, 0.85f, 250 }, { false, 0, 0 }, 0.70f, 0.0f, 0.0f };
+const Instrument INST_ODE_SQUARE = { SQUARE_TABLE, { 10, 120, 0.70f, 150 }, { false, 0, 0 }, 0.75f, 0.002f, 4.0f };
+const Instrument INST_ORGAN_16FT = { SINE_TABLE, { 5, 50, 0.95f, 50 }, { false, 0, 0 }, 0.85f, 0.0f, 0.0f };
+const Instrument INST_ORGAN_4FT = { SINE_TABLE, { 5, 50, 0.85f, 50 }, { false, 0, 0 }, 0.65f, 0.0f, 0.0f };
+const Instrument INST_ORGAN_8FT = { WARM_TRIANGLE_TABLE, { 6, 60, 0.90f, 60 }, { false, 0, 0 }, 0.75f, 0.001f, 5.0f };
+const Instrument INST_ORGAN_MIXTURE = { SINE_TABLE, { 4, 40, 0.80f, 40 }, { false, 0, 0 }, 0.55f, 0.0f, 0.0f };
+const Instrument INST_PAD_ETHREAL = { TRIANGLE_TABLE, { 800, 600, 0.80f, 1000 }, { false, 0, 0 }, 0.60f, 0.003f, 2.5f };
+const Instrument INST_PANIC_BASS = { SAW_TABLE, { 5, 60, 0.80f, 80 }, { false, 0, 0 }, 0.90f, 0.005f, 6.0f };
+const Instrument INST_PANIC_HARMONY = { SQUARE_TABLE, { 8, 100, 0.45f, 120 }, { true, 3, 2 }, 0.75f, 0.010f, 8.0f };
+const Instrument INST_PIANO_BASS = { WARM_TRIANGLE_TABLE, { 5, 450, 0.28f, 350 }, { false, 0, 0 }, 0.85f, 0.0f, 0.0f };
+const Instrument INST_PIANO_CHORD = { BRIGHT_TRIANGLE_TABLE, { 4, 400, 0.25f, 300 }, { false, 0, 0 }, 0.75f, 0.0f, 0.0f };
+const Instrument INST_PIANO_TREBLE = { BRIGHT_TRIANGLE_TABLE, { 3, 350, 0.20f, 250 }, { false, 0, 0 }, 0.80f, 0.001f, 4.0f };
+const Instrument INST_RESIGNATION_BASS = { WARM_TRIANGLE_TABLE, { 300, 500, 0.50f, 800 }, { false, 0, 0 }, 0.70f, 0.0f, 0.0f };
+const Instrument INST_RESIGNATION_HARMONY = { SINE_TABLE, { 450, 600, 0.25f, 1000 }, { false, 0, 0 }, 0.55f, 0.003f, 1.8f };
+const Instrument INST_ROMANTIC_HARMONY = { SINE_TABLE, { 250, 350, 0.75f, 500 }, { false, 0, 0 }, 0.70f, 0.003f, 3.0f };
+const Instrument INST_ROMANTIC_LEAD = { WARM_TRIANGLE_TABLE, { 45, 180, 0.78f, 520 }, { false, 0, 0 }, 0.68f, 0.018f, 4.2f };
+const Instrument INST_SENTIMENT_AFFECTION = { WARM_TRIANGLE_TABLE, { 200, 300, 0.85f, 400 }, { false, 0, 0 }, 0.75f, 0.003f, 3.0f };
+const Instrument INST_SENTIMENT_ANGER = { SAW_TABLE, { 10, 100, 0.80f, 100 }, { true, 12, 6 }, 0.90f, 0.001f, 6.0f };
+const Instrument INST_SENTIMENT_CELEBRATION = { SAW_TABLE, { 120, 300, 0.70f, 400 }, { false, 0, 0 }, 0.85f, 0.000f, 0.0f };
+const Instrument INST_SENTIMENT_COLDNESS = { SQUARE_TABLE, { 5, 40, 0.40f, 80 }, { true, 3, 1 }, 0.80f, 0.000f, 0.0f };
+const Instrument INST_SENTIMENT_CONFIDENCE = { SAW_TABLE, { 15, 150, 0.70f, 250 }, { true, 7, 5 }, 0.85f, 0.006f, 5.0f };
+const Instrument INST_SENTIMENT_DOUBT = { SQUARE_TABLE, { 10, 200, 0.50f, 150 }, { true, 12, 4 }, 0.80f, 0.000f, 0.0f };
+const Instrument INST_SENTIMENT_DREAD = { SAW_TABLE, { 120, 250, 0.55f, 250 }, { false, 0, 0 }, 0.82f, 0.009f, 4.5f };
+const Instrument INST_SENTIMENT_FATIGUE = { TRIANGLE_TABLE, { 800, 600, 0.80f, 1000 }, { false, 0, 0 }, 0.60f, 0.003f, 2.5f };
+const Instrument INST_SENTIMENT_IMPULSE = { SQUARE_TABLE, { 8, 60, 0.70f, 80 }, { true, 12, 1 }, 0.88f, 0.001f, 8.0f };
+const Instrument INST_SENTIMENT_JOY = { SINE_TABLE, { 20, 150, 0.60f, 100 }, { true, 4, 2 }, 0.85f, 0.004f, 6.0f };
+const Instrument INST_SENTIMENT_MELANCHOLY = { TRIANGLE_TABLE, { 300, 400, 0.70f, 600 }, { false, 0, 0 }, 0.75f, 0.006f, 3.5f };
+const Instrument INST_SENTIMENT_MISCHIEF = { SQUARE_TABLE, { 15, 120, 0.55f, 120 }, { true, 5, 3 }, 0.78f, 0.002f, 7.0f };
+const Instrument INST_SENTIMENT_PANIC = { SQUARE_TABLE, { 5, 80, 0.50f, 150 }, { false, 0, 0 }, 0.85f, 0.015f, 9.0f };
+const Instrument INST_SENTIMENT_RESIGNATION = { SINE_TABLE, { 400, 500, 0.30f, 900 }, { false, 0, 0 }, 0.60f, 0.004f, 2.0f };
+const Instrument INST_SENTIMENT_SERENITY = { TRIANGLE_TABLE, { 300, 400, 0.88f, 700 }, { false, 0, 0 }, 0.65f, 0.004f, 1.5f };
+const Instrument INST_SENTIMENT_SHOCK = { SQUARE_TABLE, { 10, 80, 0.60f, 100 }, { true, 12, 1 }, 0.90f, 0.000f, 0.0f };
+const Instrument INST_SENTIMENT_SILENCE = { SINE_TABLE, { 300, 200, 0.20f, 400 }, { false, 0, 0 }, 0.40f, 0.000f, 0.0f };
+const Instrument INST_SENTIMENT_TEDIUM = { TRIANGLE_TABLE, { 100, 200, 0.50f, 300 }, { false, 0, 0 }, 0.65f, 0.001f, 2.0f };
+const Instrument INST_SENTIMENT_VULNERABILITY = { BRIGHT_TRIANGLE_TABLE, { 250, 400, 0.65f, 500 }, { false, 0, 0 }, 0.70f, 0.002f, 4.0f };
+const Instrument INST_SENTIMENT_WONDER = { SINE_TABLE, { 5, 400, 0.20f, 600 }, { true, 7, 2 }, 0.75f, 0.002f, 5.0f };
+const Instrument INST_SERENITY_BASS = { SINE_TABLE, { 200, 300, 0.90f, 600 }, { false, 0, 0 }, 0.75f, 0.0f, 0.0f };
+const Instrument INST_SERENITY_HARMONY = { WARM_TRIANGLE_TABLE, { 350, 450, 0.85f, 800 }, { false, 0, 0 }, 0.60f, 0.003f, 1.2f };
+const Instrument INST_SHOCK_BASS = { SINE_TABLE, { 5, 80, 0.90f, 100 }, { false, 0, 0 }, 0.95f, 0.0f, 0.0f };
+const Instrument INST_SHOCK_HARMONY = { SAW_TABLE, { 5, 100, 0.55f, 150 }, { true, 4, 2 }, 0.80f, 0.005f, 6.0f };
+const Instrument INST_SILENCE_BASS = { SINE_TABLE, { 500, 400, 0.20f, 600 }, { false, 0, 0 }, 0.45f, 0.0f, 0.0f };
+const Instrument INST_SILENCE_HARMONY = { SINE_TABLE, { 400, 300, 0.15f, 500 }, { false, 0, 0 }, 0.35f, 0.000f, 0.0f };
+const Instrument INST_SPEED = { SQUARE_TABLE, { 5, 40, 0.40f, 80 }, { true, 3, 1 }, 0.80f, 0.000f, 0.0f };
+const Instrument INST_TEDIUM_BASS = { SINE_TABLE, { 80, 180, 0.70f, 300 }, { false, 0, 0 }, 0.75f, 0.0f, 0.0f };
+const Instrument INST_TEDIUM_HARMONY = { TRIANGLE_TABLE, { 120, 220, 0.45f, 350 }, { false, 0, 0 }, 0.60f, 0.001f, 1.5f };
+const Instrument INST_TRUMPET_LEAD = { SAW_TABLE, { 35, 120, 0.85f, 100 }, { false, 0, 0 }, 0.85f, 0.007f, 5.8f };
+const Instrument INST_TRUMPET_SECTION = { SAW_TABLE, { 45, 140, 0.80f, 120 }, { false, 0, 0 }, 0.68f, 0.004f, 5.4f };
+const Instrument INST_VIOLA_WARM = { BRIGHT_TRIANGLE_TABLE, { 140, 200, 0.85f, 240 }, { false, 0, 0 }, 0.65f, 0.004f, 5.0f };
+const Instrument INST_VIOLIN_SOLO = { SAW_TABLE, { 110, 180, 0.88f, 220 }, { false, 0, 0 }, 0.82f, 0.009f, 5.5f };
+const Instrument INST_VULNERABILITY_BASS = { SINE_TABLE, { 200, 300, 0.70f, 500 }, { false, 0, 0 }, 0.70f, 0.001f, 2.0f };
+const Instrument INST_VULNERABILITY_HARMONY = { WARM_TRIANGLE_TABLE, { 300, 400, 0.60f, 600 }, { false, 0, 0 }, 0.65f, 0.003f, 3.5f };
+const Instrument INST_WONDER_BASS = { TRIANGLE_TABLE, { 40, 200, 0.70f, 300 }, { false, 0, 0 }, 0.80f, 0.0f, 0.0f };
+const Instrument INST_WONDER_HARMONY = { SINE_TABLE, { 10, 450, 0.25f, 700 }, { true, 12, 2 }, 0.72f, 0.003f, 4.5f };

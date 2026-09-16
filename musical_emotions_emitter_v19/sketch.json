@@ -1,0 +1,9 @@
+{
+  "cpu": {
+    "fqbn": "arduino:renesas_uno:minima",
+    "name": "Arduino UNO R4 Minima",
+    "type": "serial"
+  },
+  "secrets": [],
+  "included_libs": []
+}
