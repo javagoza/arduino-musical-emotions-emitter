@@ -2,6 +2,12 @@
 
 **A 4‑voice polyphonic Arduino synthesizer, medium‑wave AM radio transmitter, and educational DSP platform that turns emotions into music — and broadcasts them through the air.**
 
+---
+> A complete design and development article is available on element14, covering the entire journey from the first Arduino RF experiments to the finished Musical Emotions Emitter:
+>
+> https://community.element14.com/challenges-projects/project14/b/make-a-connection/posts/musical-emotions-emitter-broadcasting-emotions-over-medium-wave-radio
+---
+
 > Select an emotion with a rotary encoder. The Arduino synthesizes a short original composition in real time — wavetables, ADSR envelopes, vibrato, arpeggios and modeled percussion — routes it to an onboard DAC/speaker, **and** simultaneously uses it to amplitude‑modulate a medium‑wave RF carrier that any nearby AM radio can receive.
 
 ```
